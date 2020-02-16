@@ -48,4 +48,25 @@ We need to add blocks for navigation and etc in index.blade.php
     <div>
         <a style="margin: 19px;" href="{{ route('contacts.create')}}" class="btn btn-primary">New contact</a>
         </div>
-Note: To now the gui form is not styled.  Lets try to make it happen next. But I will checkin the code for now. As I think the code generated next should not be in the repo.
+Note: To now the gui form is not styled.  Lets try to make it happen next. But I will checking the code for now. As I think the code generated next should not be in the repo.
+
+
+To install
+
+git clone https://github.com/faellie/laravel.git
+cd laravel/laravel-first-crud-app
+
+composer insatll
+cp .env.example .env or update .env
+php artisan key:generate
+
+start server
+php artisan serve
+
+To make the gui using uve:
+
+composer require laravel/ui.
+php artisan ui vue.
+php artisan ui vue --auth.
+npm install.
+npm run dev.
