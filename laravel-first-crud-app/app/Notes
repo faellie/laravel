@@ -1,3 +1,51 @@
 This project is done following https://www.techiediaries.com/php-laravel-crud-mysql-tutorial/
 First create the project with composer:
+
 composer create-project  --prefer-dist  laravel/laravel laravel-first-crud-app
+update .env with  local db information
+[zihuangw@localhost laravel-first-crud-app]$ php artisan migrate ==> this seems is not needed at all
+(probably a mistake in the tutorial, it make sense, since we did notthing after create the project)
+
+Create the data model:
+[zihuangw@localhost laravel-first-crud-app]$ php artisan make:model Contact --migration
+update the newly created file ./laravel-first-crud-app/database/migrations/2020_02_16_165746_create_contacts_table.php
+[zihuangw@localhost laravel-first-crud-app]$ php artisan migrate:refresh
+
+Note: make sure you did not have a database called db already, if so, you can always delete the database : mysql> drop database dbname
+Or use a different database (.env)
+
+Update Contact.php
+Create Controller
+[zihuangw@localhost laravel-first-crud-app]$ php artisan make:controller ContactController --resource
+
+Update web.php for the routes
+Update ContactController for method create() and store() (Remember to include use App\Contact;)
+
+Create ./laravel/laravel-first-crud-app/resources/views/base.blade.php and update
+
+Creeate (include fir) /opt/LI/laravel/laravel-first-crud-app/resources/views/contacts/create.blade.php and update
+
+Run php artisan serve from the project dir and you shall have something at
+http://127.0.0.1:8000/contacts/create
+Note: To now the gui form is not styled.
+
+create and update /opt/LI/laravel/laravel-first-crud-app/resources/views/contacts/index.blade.php
+
+Create and update /opt/LI/laravel/laravel-first-crud-app/resources/views/contacts/edit.blade.php
+
+Note we also need to update the functions (e.g. edit/update) in ContactController
+
+We need to add blocks for navigation and etc in index.blade.php
+    <div class="col-sm-12">
+
+      @if(session()->get('success'))
+        <div class="alert alert-success">
+          {{ session()->get('success') }}
+        </div>
+      @endif
+    </div>
+
+    <div>
+        <a style="margin: 19px;" href="{{ route('contacts.create')}}" class="btn btn-primary">New contact</a>
+        </div>
+Note: To now the gui form is not styled.  Lets try to make it happen next. But I will checkin the code for now. As I think the code generated next should not be in the repo.
