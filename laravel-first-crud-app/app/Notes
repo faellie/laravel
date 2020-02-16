@@ -1,0 +1,3 @@
+This project is done following https://www.techiediaries.com/php-laravel-crud-mysql-tutorial/
+First create the project with composer:
+composer create-project  --prefer-dist  laravel/laravel laravel-first-crud-app
